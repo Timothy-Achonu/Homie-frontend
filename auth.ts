@@ -1,7 +1,7 @@
-import NextAuth from "next-auth";
+import NextAuth, { AuthError } from "next-auth";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
-import { signUserIn, googleSignIn } from "./lib/common/auth-options-services";
+import { signUserIn, googleSignIn, signUserInAction } from "./lib/auth-services";
 import { UserInfoProps } from "@/next-auth";
 import { parseStatusCode } from "@/utils";
 
@@ -12,6 +12,14 @@ const GOOGLE_CLIENT_SECRET =
   process.env.AUTH_GOOGLE_SECRET || process.env.GOOGLE_CLIENT_SECRET!;
 
  
+  export class InvalidLoginError extends AuthError {
+    code = "custom";
+    errorMessage: string;
+    constructor(message?: string, errorOptions?: Record<string, unknown>) {
+      super(message, errorOptions);
+      this.errorMessage = message || "";
+    }
+  }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   secret: AUTH_SECRET,
@@ -33,14 +41,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           string
         >;
 
-        const res = await signUserIn({ email, password, ipAddress });
-        console.log({ res });
+        const res = await signUserInAction({ email, password, ipAddress });
         if (!parseStatusCode(res.statusCode).success) {
-          console.log("ERROR THREW");
-           throw new Error(JSON.stringify(res));
-
-
-
+           throw new InvalidLoginError(JSON.stringify(res));
         }
         const user = res.data as unknown as UserInfoProps;
         return user;

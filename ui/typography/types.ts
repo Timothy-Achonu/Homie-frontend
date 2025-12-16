@@ -49,7 +49,7 @@ export type TypographyFontWeight =
   | "extra-bold"
   | "black";
 
-export type TypographyFont = "inter" | "playwrite";
+export type TypographyFont = "inter" | "agile";
 
 type IntrinsicElementProps = {
   [K in keyof React.JSX.IntrinsicElements]: React.JSX.IntrinsicElements[K];

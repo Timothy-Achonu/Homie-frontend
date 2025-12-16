@@ -26,8 +26,8 @@ const twMerge = extendTailwindMerge<"custom-typography", never>({
             ],
         },
         conflictingClassGroups: {
-            // Custom typography classes don't conflict with text color classes
-            // They can coexist
+            // Make custom typography classes conflict with standard fontSize classes
+            "custom-typography": ["font-size"],
         },
     },
 });

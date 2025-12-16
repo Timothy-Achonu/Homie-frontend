@@ -21,7 +21,7 @@ const typography = cva('', {
       
     font: {
       inter: 'font-inter',
-      playwrite: 'font-playwrite',
+      agile: 'font-agile',
     },  
     color: { 
       white: 'text-white',       
@@ -29,7 +29,7 @@ const typography = cva('', {
       'gray-500': 'text-gray-500',
       'gray-600': 'text-gray-600',
       'gray-700': 'text-gray-700',
-      info: 'text-info',
+      info: 'text-info', 
       success: 'text-success',
       warn: 'text-warning',
       error: 'text-error',

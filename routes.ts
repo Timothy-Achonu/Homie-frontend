@@ -9,7 +9,7 @@ export const enum ApplicationRoutes {
   AUTH_SIGN_UP_OTP = '/auth/otp',
   AUTH_FORGOT_PASSWORD_OTP = '/auth/forgot-password/otp',
   AUTH_SIGN_IN = '/auth/sign-in',
-  AUTH_SIGN_UP = '/auth/signup',
+  AUTH_SIGN_UP = '/auth/sign-up',
   AUTH_FORGOT_PASSWORD = '/auth/forgot-password',
   AUTH_RESET_PASSWORD = '/auth/reset-password',
 

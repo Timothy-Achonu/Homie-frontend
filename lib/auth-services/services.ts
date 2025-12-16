@@ -1,16 +1,7 @@
-import { ResProps, getBaseUrl } from "@/lib/common";
-import { SigninFormSchema, SignInRes } from "./models";
+import { SigninFormSchema, SignInRes, ResProps } from "../common/models";
+import { getBaseUrl } from "../common/getBaseUrl";
 
-//I'm doing this to fix a circular importation bug:
-//network -> fetcher.sever -> authOptions -> app/auth -> services -> network.
 
-/*
-network needs fetcher.server
-fetcher.server needs authOptions (this part: `const session = (await getServerSession(authOptions)) as Session | null;` inside serverFetcher)
-authOptions need network (loginWithGoogle and SignUserIn)
-
-So I want to create the fetch requests authOptions need without using network)
-*/
 
 type FetcherArgs = [reqInfo: RequestInfo | URL, init?: RequestInit | undefined];
 const fetcher = async <T>(...args: FetcherArgs) => {
@@ -28,7 +19,7 @@ const fetcher = async <T>(...args: FetcherArgs) => {
   }
 };
 
-export const post = <T>(...args: FetcherArgs) => {
+ const post = <T>(...args: FetcherArgs) => {
   const [info, init] = args;
 
   return fetcher<T>(info, {
@@ -46,7 +37,6 @@ export const googleSignIn = async (data: {
   affId?: string;
 }) => {
   const URL = `${getBaseUrl()}/auth/google`;
-  console.log({ URL });
   const reqBody = { body: JSON.stringify({ ...data }) };
 
   return post<SignInRes>(URL, reqBody);
@@ -54,7 +44,6 @@ export const googleSignIn = async (data: {
 
 export const signUserIn = async (data: SigninFormSchema) => {
   const URL = `${getBaseUrl()}/auth/login`;
-  console.log({ URL });
   const reqBody = { body: JSON.stringify({ ...data }) };
 
   return post<SignInRes>(URL, reqBody);
