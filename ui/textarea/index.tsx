@@ -96,7 +96,7 @@ const TextAreaComponent = <FV extends FieldValues>(
             )}
           >    
             {pageCount && totalPages && (
-              <Typography variant="text-sm" font="inter" color="gray-500" fontWeight="semi-bold">
+              <Typography variant="text-sm" font="poppins" color="gray-500" fontWeight="semi-bold">
                 Page:{' '}
                 <>
                   {totalPages === 'unlimited' ? (
@@ -113,10 +113,10 @@ const TextAreaComponent = <FV extends FieldValues>(
             {shouldShowCharCount && (  
               <Typography
                 variant="text-xs"
-                font="inter"
+                font="poppins"
                 color="gray-500"
                 fontWeight="semi-bold"
-                className="!ml-auto"
+                className="ml-auto"
               >
                 Characters count:{' '}
                 <span className="text-gray-1">
