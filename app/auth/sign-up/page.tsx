@@ -2,10 +2,9 @@ import Link from "next/link";
 import { Typography } from "@/ui/typography";
 import { GoogleSignin } from "../components/google-signin";
 import { SignUpForm } from "./components/sign-up-form";
-
+import { ApplicationRoutes } from "@/routes";
 
 export default function SignUpPage() {
-
   return (
     <div className="flex w-full flex-col items-center">
       <div className="flex w-full flex-col items-center gap-8">
@@ -24,7 +23,6 @@ export default function SignUpPage() {
             variant="text-xs"
             color="gray-600"
             align="center"
-            className="max-w-sm"
           >
             Start Your Journey to Your Dream Property & Deals
           </Typography>
@@ -45,12 +43,12 @@ export default function SignUpPage() {
 
         {/* Login Link */}
         <Typography variant="text-sm" color="gray-600">
-          <Link href="/auth/sign-in" className="hover:underline">
-            Login instead?
-          </Link>
+          <Link href={ApplicationRoutes.AUTH_SIGN_IN} className="hover:underline">
+            <span className="text-primary font-bold"> Login </span>{" "}
+            <span className="text-quaternary-foreground"> instead?</span>
+          </Link> 
         </Typography>
       </div>
     </div>
   );
 }
-

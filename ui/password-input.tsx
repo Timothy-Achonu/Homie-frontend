@@ -5,8 +5,8 @@ import clsx from 'clsx';
 import { FieldValues } from 'react-hook-form';
 
 import { Input, InputComponentType, InputProps } from './input';
-import { SlashIcon } from 'lucide-react';
-import { EyeIcon } from 'lucide-react';
+import { EyeIcon, EyeOffIcon } from 'lucide-react';
+
 const PasswordInputComponent = <FV extends FieldValues>(
   props: InputProps<FV>,
   ref?: ForwardedRef<HTMLInputElement>
@@ -29,7 +29,7 @@ const PasswordInputComponent = <FV extends FieldValues>(
       <Input {...props} ref={ref} type={inputType} />
 
       <span className={eyeIconClassName} onClick={togglePasswordView}>
-        {inputType === 'password' ? <EyeIcon size={20} /> : <SlashIcon size={20} />}
+        {inputType === 'password' ? <EyeIcon size={20} /> : <EyeOffIcon size={20} />}
       </span>
     </div>
   );

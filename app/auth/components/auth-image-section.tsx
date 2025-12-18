@@ -5,25 +5,44 @@ import { Typography } from '@/ui/typography';
 import { usePathname } from 'next/navigation';
 
 const authImages = {
-  '/auth/sign-up': '/images/AuthPagePhoto_Signup.png',
-  '/auth/signup': '/images/AuthPagePhoto_Signup.png',
-  default: '/images/AuthPagePhoto.png',
+  '/auth/sign-up': {
+    imageSrc: '/images/AuthPagePhoto_Signup.png',
+    alt: 'Happy couple in their new home',
+  },
+  '/auth/sign-in': {
+    imageSrc: '/images/AuthPagePhoto_login.png',
+    alt: 'Happy couple in their new home',
+  },
+  '/auth/verify-email': {
+    imageSrc: '/images/AuthPagePhoto_EmailVerif.png',
+    alt: 'House architectural plan on table',
+  },
+  
+  '/auth/forgot-password': {
+    imageSrc: '/images/AuthPagePhoto_forgot_password.png',
+    alt: 'House architectural plan on table',
+  },
+
+  default: {
+    imageSrc: '/images/AuthPagePhoto.png',
+    alt: 'Happy couple in their new home',
+  },
 } as const;
 
 export function AuthImageSection() {
   const pathname = usePathname();
-  const imageSrc = authImages[pathname as keyof typeof authImages] || authImages.default;
+  const imageConfig = authImages[pathname as keyof typeof authImages] || authImages.default;
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
       <Image
-        src={imageSrc}
-        alt="Happy couple in their new home"
+        src={imageConfig.imageSrc}
+        alt={imageConfig.alt}
         fill
         className="object-cover"
         priority
       />
-      <div className="absolute bottom-0 left-0 right-0 bg-linear-to-b from-transparent via-primary/40 to-primary/60 p-8 ">
+      <div className="absolute bottom-0 left-0 right-0 bg-linear-to-b from-transparent via-primary/80 to-primary/96 p-8 ">
         <Typography
           variant="display-md"
           color="white"
@@ -31,7 +50,7 @@ export function AuthImageSection() {
           className="leading-tight font-agile"
         >
           Rent Smarter.
-          <br />
+          <br /> 
           Sell Better. 
           <br />
           Live Easier.

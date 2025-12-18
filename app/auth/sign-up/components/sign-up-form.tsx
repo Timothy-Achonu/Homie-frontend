@@ -1,45 +1,40 @@
 "use client";
 
-import Link from "next/link";
 import { Button } from "@/ui/button";
 import { Typography } from "@/ui/typography";
-import { GoogleSignin } from "../../components/google-signin";
-import { Input } from "@/ui/input";
+import { Input, Checkbox } from "@/ui";
 import { PasswordInput } from "@/ui/password-input";
-import { useForm } from "react-hook-form";
-import { Check } from "lucide-react";
+import { useFormWithSchema } from "@/hooks/useFormWithSchema";
+import { signupSchema } from "@/lib/app";
 
-interface SignUpFormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-}
 
 export function SignUpForm() {
   const {
     register,
+    handleSubmit,
+    watch,
     formState: { errors },
-  } = useForm<SignUpFormData>();
+  } = useFormWithSchema(signupSchema);
+
+  const password = watch("password") || "";
+
+  // Password requirement validation functions
+  const checkPasswordRequirements = (pwd: string) => {
+    return {
+      minLength: pwd.length >= 8,
+      hasLowerCase: /[a-z]/.test(pwd),
+      hasUpperCase: /[A-Z]/.test(pwd),
+      hasSpecialChar: /[!@#$%^&*(),.?":{}|<>\[\]\\\/_+\-=~`]/.test(pwd),
+    };
+  };
+
+  const passwordRequirements = checkPasswordRequirements(password);
+
 
   return (
-    <form className="flex w-full flex-col gap-6">
-      <Input
-        name="firstName"
-        placeholder="First Name on your NIN"
-        register={register}
-        required
-        errorMsg={errors.firstName?.message}
-      />
-
-      <Input
-        name="lastName"
-        placeholder="Last Name on your NIN"
-        register={register}
-        required
-        errorMsg={errors.lastName?.message}
-      />
-
+    <form className="flex w-full flex-col gap-6" onSubmit={handleSubmit((data) => {
+      console.log(data);
+    })}>
       <Input
         name="email"
         type="email"
@@ -55,34 +50,41 @@ export function SignUpForm() {
         register={register}
         required
         errorMsg={errors.password?.message}
+        hideErrorMsg={true}
       />
 
-      {/* Password Requirements */}
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-2">
-          <Check className="h-4 w-4 text-success" />
-          <Typography variant="text-xs" color="gray-600">
+      {/* Password Requirements */}   
+      <div className="flex gap-2">
+        <div className="flex flex-col gap-2"> 
+        <div className="flex gap-2">
+          <Checkbox checked={passwordRequirements.minLength} disabled className="disabled:opacity-100 shadow-none" />
+          <Typography variant="text-xs" color={!passwordRequirements.minLength && errors.password?.message ? "error" : "quaternary-foreground"}>
             Minimum of eight characters
           </Typography>
         </div>
-        <div className="flex items-center gap-2">
-          <Check className="h-4 w-4 text-success" />
-          <Typography variant="text-xs" color="gray-600">
+        <div className="flex gap-2">
+        <Checkbox checked={passwordRequirements.hasLowerCase} disabled className="disabled:opacity-100 shadow-none" />
+        <Typography variant="text-xs" color={!passwordRequirements.hasLowerCase && errors.password?.message ? "error" : "quaternary-foreground"}>
             At least one lower case letter
           </Typography>
         </div>
-        <div className="flex items-center gap-2">
-          <Check className="h-4 w-4 text-success" />
-          <Typography variant="text-xs" color="gray-600">
+        </div>
+        {/* second part */}
+        <div className="flex flex-col gap-2 "> 
+
+        <div className="flex  gap-2">
+        <Checkbox checked={passwordRequirements.hasUpperCase} disabled className="disabled:opacity-100 shadow-none" />
+        <Typography variant="text-xs" color={!passwordRequirements.hasUpperCase && errors.password?.message ? "error" : "quaternary-foreground"}>
             At least one upper case letter
           </Typography>
         </div>
-        <div className="flex items-center gap-2">
-          <Check className="h-4 w-4 text-success" />
-          <Typography variant="text-xs" color="gray-600">
+        <div className="flex gap-2">
+        <Checkbox checked={passwordRequirements.hasSpecialChar} disabled className="disabled:opacity-100 shadow-none" />
+        <Typography variant="text-xs" color={!passwordRequirements.hasSpecialChar && errors.password?.message ? "error" : "quaternary-foreground"}>
             At least one special character
           </Typography>
         </div>
+        </div> 
       </div>
 
       {/* Sign Up Button */}
@@ -90,10 +92,11 @@ export function SignUpForm() {
         type="submit"
         variant="default"
         size="lg"
-        className="shadow-xs text-display-sm-fluid py-4 h-auto"
+        className="py-4 h-auto"
       >
         Sign Up
       </Button>
     </form>
   );
 }
+ 

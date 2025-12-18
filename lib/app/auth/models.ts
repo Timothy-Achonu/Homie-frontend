@@ -64,8 +64,8 @@ export interface Account {
 
 
 export interface OTPVerifySchema {
-  userId: string;
-  code: string;
+  email: string;
+  otp: string;
 }
 
 export interface ResetPasswordSchema {

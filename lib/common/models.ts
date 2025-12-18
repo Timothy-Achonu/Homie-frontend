@@ -3,7 +3,7 @@ export type ResProps<T = null> = {
   statusCode?: number;
   message?: string[] | string;
   data?: T;
-  error?: Error;
+  error?: unknown;
 };
 
 

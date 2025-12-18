@@ -1,9 +1,9 @@
 import * as Yup from 'yup';
+import type { InferType } from 'yup';
 
 // Form validation schema
 export const signupSchema = Yup.object({
   email: Yup.string().email().required('Email is required!'),
-  fullName: Yup.string().required('Please enter your full name.'),
   password: Yup.string()
     .required('Please Enter a password.')
     .test(
@@ -13,6 +13,9 @@ export const signupSchema = Yup.object({
     ),
   privacy: Yup.boolean().isTrue('Please accept the terms to continue.').required('Please accept the terms to continue.'),
 });
+
+export type SignupSchemaType = InferType<typeof signupSchema>;
+
   
 // Form validation schema
 export const signinSchema = Yup.object({
@@ -22,7 +25,7 @@ export const signinSchema = Yup.object({
 });
 
 // Password reset req schema
-export const passResetReqSchema = Yup.object().shape({
+export const forgotPasswordSchema = Yup.object().shape({
   email: Yup.string().email().required('Email is required!'),
 });
 

@@ -1,0 +1,21 @@
+@reference "tailwindcss";
+
+.checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  transition-duration: 0.3s;
+  @apply mt-[3px] h-4 min-h-[1rem] w-4 min-w-[1rem] cursor-pointer rounded-[4px] border border-blue-400 bg-white text-blue-100 focus:ring-2 focus:ring-blue-100;
+}
+.checkbox:disabled {
+  opacity: 0.2;
+  pointer-events: none;
+}
+.checkbox:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23FFFFFF' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  @apply border-blue-400 bg-red-400;
+}
+.checkbox:checked:focus, .checkbox:checked:active, .checkbox:checked:hover {
+  @apply border-blue-400;
+}/*# sourceMappingURL=index.module.css.map */     

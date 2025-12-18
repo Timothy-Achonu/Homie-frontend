@@ -35,7 +35,7 @@ export default function AuthPage() {
           <Button
             variant="default"
             size="lg"
-            className="shadow-xs text-display-sm-fluid py-4 h-auto"
+            className="shadow-button text-display-sm-fluid py-4 h-auto"
             asChild
           >
             <Link href={ApplicationRoutes.AUTH_SIGN_UP}>Sign Up</Link>
@@ -44,7 +44,7 @@ export default function AuthPage() {
           <Button
             variant="outline"
             size="lg"
-            className="w-full border-gray-300 text-primary hover:bg-gray-50 shadow-xs border-none text-display-sm-fluid py-4 h-auto"
+            className="w-full border-gray-300 text-primary hover:bg-gray-50 shadow-button border-none text-display-sm-fluid py-4 h-auto"
             asChild
           >
             <Link href={ApplicationRoutes.AUTH_SIGN_IN}>Login</Link>

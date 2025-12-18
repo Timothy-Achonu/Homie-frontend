@@ -1,7 +1,7 @@
 import NextAuth, { AuthError } from "next-auth";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
-import { signUserIn, googleSignIn, signUserInAction } from "./lib/auth-services";
+import {  googleSignIn, signUserInAction } from "./lib/auth-services";
 import { UserInfoProps } from "@/next-auth";
 import { parseStatusCode } from "@/utils";
 

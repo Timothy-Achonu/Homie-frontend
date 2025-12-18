@@ -28,7 +28,8 @@ export type TypographyColors =
   | "gray-600"
   | "gray-500"
   | "gray-700"
-  | "tertiary-600";
+  | "tertiary-600"
+  | "quaternary-foreground";
 
 export type TypographyAlign =
   | "start"
@@ -49,7 +50,7 @@ export type TypographyFontWeight =
   | "extra-bold"
   | "black";
 
-export type TypographyFont = "inter" | "agile";
+export type TypographyFont = "poppins" | "agile";
 
 type IntrinsicElementProps = {
   [K in keyof React.JSX.IntrinsicElements]: React.JSX.IntrinsicElements[K];

@@ -2,6 +2,7 @@ import { TypographyProps, variantMapping } from './types';
 import React from 'react';
 import { cva } from 'class-variance-authority';
 import { cn } from '@/utils';
+import { agile, poppins } from '@/app/styles/fonts';
 
 const typography = cva('', {
   variants: {
@@ -20,8 +21,8 @@ const typography = cva('', {
     },   
       
     font: {
-      inter: 'font-inter',
-      agile: 'font-agile',
+      poppins: 'font-poppins', 
+      agile: 'font-agile',      
     },  
     color: { 
       white: 'text-white',       
@@ -35,6 +36,7 @@ const typography = cva('', {
       error: 'text-error',
       secondary: 'text-secondary-main',
       primary: 'text-primary-900',
+      'quaternary-foreground': 'text-quaternary-foreground',
       'primary-light-100': 'text-primary-light-100', 
       'secondary-100': 'text-secondary-100',
       'tertiary-600': 'text-tertiary-600',
@@ -61,7 +63,7 @@ const typography = cva('', {
     },
   },
   defaultVariants: {
-    font: 'inter',
+    font: 'poppins',
   },
   compoundVariants: [],
 });
@@ -102,7 +104,7 @@ const Typography: React.FC<TypographyProps> = (props) => {
     noWrap,
     align = 'left',
     color = 'gray-1',
-    font = 'inter',
+    font = 'poppins',
     className = '',
     children, 
     ...rest

@@ -55,7 +55,7 @@ const InputComponent = <FV extends FieldValues>(
         ) : null} 
         <input
           className={cn(
-            `peer block max-h-14 w-full appearance-none rounded-xl border bg-white pr-6 py-5 text-[0.875rem] font-semibold placeholder:font-normal placeholder:text-gray-4 autofill:bg-white focus:outline-none`,
+            `peer block max-h-14 w-full appearance-none rounded-xl shadow-input bg-white pr-6 py-5 text-[0.875rem] font-semibold placeholder:font-normal placeholder:text-gray-4 autofill:bg-white focus:outline-none`,
             leftIcon ? 'pl-12' : 'pl-6',
             rest.disabled
               ? 'disabled:cursor-not-allowed disabled:bg-primary-light-100 disabled:font-semibold  disabled:text-gray-3'
@@ -64,12 +64,12 @@ const InputComponent = <FV extends FieldValues>(
               ? 'border-error text-error focus:ring-error'
               : successMsg
               ? 'border-success text-success focus:border-success focus:ring-success'
-              : 'focus:ring-primary-dark border-gray-4 text-gray-1 focus:border-success',
+              : '',
             customClassName
           )} 
           id={name}
           placeholder={placeholder}
-          onWheel={(e) => {
+          onWheel={(e) => { 
             (e.currentTarget as unknown as HTMLInputElement).blur();
           }}
           {...rest}
@@ -129,7 +129,7 @@ const RadioInputComponent = <FV extends FieldValues>(
       <input
         className={cn(
           `appeagrance-none peer block h-[20px] max-h-14 w-[20px] rounded-xl
-          font-semibold placeholder:font-normal placeholder:text-gray-4 autofill:bg-white focus:outline-none`,
+          font-semibold placeholder:font-normal placeholder:text-primary autofill:bg-white focus:outline-none`,
           rest.disabled
             ? 'disabled:cursor-not-allowed disabled:bg-primary-light-100 disabled:font-semibold  disabled:text-gray-3'
             : '',
@@ -138,7 +138,7 @@ const RadioInputComponent = <FV extends FieldValues>(
             ? 'border-error text-error focus:ring-error'
             : successMsg
             ? 'border-success text-success focus:border-success focus:ring-success'
-            : 'focus:ring-primary-dark border-gray-4 text-gray-700 focus:border-success',
+            : '',
           customClassName
         )}
         type="radio"
@@ -146,7 +146,7 @@ const RadioInputComponent = <FV extends FieldValues>(
         name={name}
         placeholder={placeholder}
         {...rest}
-        ref={ref}
+        ref={ref} 
         {...registerInput}
       />
       {label && (

@@ -6,7 +6,7 @@ export function GoogleSignin() {
     <Button
       variant="outline"
       size="lg"
-      className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 shadow-xs border-none text-3xl py-4 h-auto"
+      className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 shadow-button border-none text-3xl py-4 h-auto"
     >
       <GoogleIcon />
       <Typography tag="span" variant="text-md" color="gray-500" fontWeight="medium">
@@ -15,4 +15,4 @@ export function GoogleSignin() {
     </Button> 
   );
 }
-   
+    
