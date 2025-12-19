@@ -70,7 +70,7 @@ const VerifyEmail = () => {
   return (
     <div className="flex w-full flex-col items-center">
       <form className="flex w-full flex-col">
-        <div className=" flex max-w-[315px] flex-col mb-6">
+        <div className=" flex flex-col mb-6">
           <Typography variant="display-lg" align="center" fontWeight="medium" font="agile">
             Sign Up
           </Typography>
@@ -105,7 +105,7 @@ const VerifyEmail = () => {
           </Typography>
         )}
 
-        <div className="mt-3">
+        <div className="mt-3 flex justify-center">
           {resendCode ? (
             <Button
               disabled={isSendingOTP}

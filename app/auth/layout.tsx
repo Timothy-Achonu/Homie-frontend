@@ -9,16 +9,17 @@ export default function AuthLayout({
   page?: React.ReactNode;
 }) {
   return (
-    <div className="flex h-screen w-full overflow-hidden">
+    <div className="flex lg:h-dvh w-full lg:overflow-hidden flex-col lg:flex-row">
       {/* Left side with image */}
-      <div className="hidden w-1/2 lg:block">
+      <div className=" lg:w-1/2 lg:block">
+        
         <AuthImageSection />
-      </div>
+      </div> 
 
       {/* Right side with form */}
       <div className="flex w-full flex-col lg:w-1/2 px-8 py-12 gap-4 bg-background overflow-y-auto">
         {/* Logo */}
-        <div className="flex items-center gap-2 ml-auto ">
+        <div className="lg:flex items-center gap-2 ml-auto hidden">
           <LogoIcon width={70} height={78} />
         </div>
         <div className="flex w-full flex-col gap-4 flex-1 justify-center items-center max-w-[MAX(21rem,30vw)] mx-auto">
@@ -28,4 +29,3 @@ export default function AuthLayout({
     </div>
   );
 }
-    

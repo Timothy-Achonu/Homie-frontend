@@ -29,7 +29,8 @@ export type TypographyColors =
   | "gray-500"
   | "gray-700"
   | "tertiary-600"
-  | "quaternary-foreground";
+  | "quaternary-foreground" |
+  'inherit';
 
 export type TypographyAlign =
   | "start"

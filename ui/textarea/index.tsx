@@ -1,19 +1,17 @@
-'use client';
+"use client";
 
-import React, { ForwardedRef } from 'react';
-import clsx from 'clsx';
-import { FieldValues, UseFormRegisterReturn, Path } from 'react-hook-form';
+import React, { ForwardedRef } from "react";
+import clsx from "clsx";
+import { FieldValues, UseFormRegisterReturn, Path } from "react-hook-form";
 
-
-import { Typography } from '../typography';
-import { TextAreaProps } from './index.types';
-
+import { Typography } from "../typography";
+import { TextAreaProps } from "./index.types";
 
 export interface UseSMSInputReturn {
   charCount: number;
   pageCount: number;
-  totalPages: number | 'unlimited';
-  maxCharacters: number;  
+  totalPages: number | "unlimited";
+  maxCharacters: number;
 }
 
 const TextAreaComponent = <FV extends FieldValues>(
@@ -43,15 +41,16 @@ const TextAreaComponent = <FV extends FieldValues>(
     ? register(name, { required: rest.required })
     : {};
 
-  const shouldShowCharCount = charCount || charCount === 0 || maxCharacters || maxCharacters === 0;
+  const shouldShowCharCount =
+    charCount || charCount === 0 || maxCharacters || maxCharacters === 0;
 
   return (
     <div className={` relative z-0 box-content flex w-full  flex-col`}>
       {label && (
         <label
           className={clsx(
-            'mb-4 flex w-full flex-wrap items-center justify-between gap-2 text-body-s font-semibold',
-            errorMsg ? 'text-error' : 'text-gray-3'
+            "mb-4 flex w-full flex-wrap items-center justify-between gap-2 text-body-s font-semibold",
+            errorMsg ? "text-error" : "text-gray-3"
           )}
           htmlFor={name}
         >
@@ -62,14 +61,14 @@ const TextAreaComponent = <FV extends FieldValues>(
 
       <div
         className={clsx(
-          'relative rounded-xl border px-6 py-5',
-          isSMSInput && 'h-[310px] pb-11',
+          "relative rounded-xl border px-6 py-5",
+          isSMSInput && "h-[310px] pb-11",
           errorMsg
-            ? 'border-error text-error focus-within:ring-error '
+            ? "border-error text-error focus-within:ring-error "
             : successMsg
-            ? 'border-success text-success focus-within:border-success focus-within:ring-success'
-            : 'focus-within:ring-primary-dark border-gray-4 text-gray-1 focus-within:border-success',
-          rest.disabled && 'bg-primary-light-100',
+            ? "border-success text-success focus-within:border-success focus-within:ring-success"
+            : "focus-within:ring-primary-dark border-gray-4 text-gray-1 focus-within:border-success",
+          rest.disabled && "bg-primary-light-100",
           containerClassName
         )}
       >
@@ -77,8 +76,8 @@ const TextAreaComponent = <FV extends FieldValues>(
           className={clsx(
             ` block h-full min-h-[100px] w-full resize-none appearance-none bg-white text-[0.875rem] font-semibold placeholder:text-[0.875rem] placeholder:font-normal placeholder:text-gray-4 autofill:bg-white focus:outline-none`,
             rest.disabled
-              ? 'disabled:text-black-300 disabled:border-black-50/10 disabled:cursor-not-allowed disabled:bg-primary-light-100'
-              : '',
+              ? "disabled:text-black-300 disabled:border-black-50/10 disabled:cursor-not-allowed disabled:bg-primary-light-100"
+              : "",
             customClassName
           )}
           id={name}
@@ -91,15 +90,20 @@ const TextAreaComponent = <FV extends FieldValues>(
         {isSMSInput && (
           <div
             className={clsx(
-              'absolute bottom-px left-1/2 flex w-[calc(100%-5px)] -translate-x-1/2 justify-between rounded-xl bg-white px-6 py-3',
-              rest.disabled && 'bg-primary-light-100!'
+              "absolute bottom-px left-1/2 flex w-[calc(100%-5px)] -translate-x-1/2 justify-between rounded-xl bg-white px-6 py-3",
+              rest.disabled && "bg-primary-light-100!"
             )}
-          >    
+          >
             {pageCount && totalPages && (
-              <Typography variant="text-sm" font="poppins" color="gray-500" fontWeight="semi-bold">
-                Page:{' '}
+              <Typography
+                variant="text-sm"
+                font="poppins"
+                color="gray-500"
+                fontWeight="semi-bold"
+              >
+                Page:{" "}
                 <>
-                  {totalPages === 'unlimited' ? (
+                  {totalPages === "unlimited" ? (
                     <span className="text-gray-1">{pageCount}</span>
                   ) : (
                     <span className="text-gray-1">
@@ -110,7 +114,7 @@ const TextAreaComponent = <FV extends FieldValues>(
               </Typography>
             )}
 
-            {shouldShowCharCount && (  
+            {shouldShowCharCount && (
               <Typography
                 variant="text-xs"
                 font="poppins"
@@ -118,7 +122,7 @@ const TextAreaComponent = <FV extends FieldValues>(
                 fontWeight="semi-bold"
                 className="ml-auto"
               >
-                Characters count:{' '}
+                Characters count:{" "}
                 <span className="text-gray-1">
                   {charCount} {maxCharacters && <> /{maxCharacters}</>}
                 </span>
@@ -132,7 +136,7 @@ const TextAreaComponent = <FV extends FieldValues>(
         <Typography
           variant="text-xs"
           fontWeight="regular"
-          color={errorMsg ? 'error' : 'success'}
+          color={errorMsg ? "error" : "success"}
           className="mt-2"
         >
           {errorMsg || successMsg}
@@ -149,4 +153,4 @@ export type TextAreaComponentType = <FV extends FieldValues>(
 const TextArea = React.forwardRef(TextAreaComponent) as TextAreaComponentType;
 
 export { TextArea };
-export * from './index.types';
+export * from "./index.types";

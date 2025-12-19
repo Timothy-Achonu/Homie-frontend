@@ -43,7 +43,7 @@ const OTPInputField = ({
               type="password"
               autoComplete="DO_NO_PREFILL"
               className={clsx(
-                'min-h-14 min-w-10 rounded-lg shadow-input border-primary ring-primary outline-primary',
+                'min-h-20 min-w-14 rounded-[24px] shadow-input border-primary ring-primary outline-primary',
                 !!otpError && 'border-error' 
               )}
               disabled={disableInput}
@@ -62,11 +62,11 @@ const OTPInputField = ({
       />
 
       {otpError ? (
-        <Typography color="error" variant="text-xs"  fontWeight="medium"> 
+        <Typography color="error" variant="text-xs"  fontWeight="medium" align="center"> 
           {otpError}
         </Typography>
       ) : infoMsg ? (
-        <Typography color="gray-500" variant="text-xs"  fontWeight="medium">
+        <Typography color="gray-500" variant="text-xs"  fontWeight="medium" align="center">
           {infoMsg}
         </Typography>
       ) : null}

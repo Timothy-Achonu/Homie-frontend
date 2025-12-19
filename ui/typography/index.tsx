@@ -40,6 +40,7 @@ const typography = cva('', {
       'primary-light-100': 'text-primary-light-100', 
       'secondary-100': 'text-secondary-100',
       'tertiary-600': 'text-tertiary-600',
+      inherit: 'text-inherit',
     },
     fontWeight: {
       thin: 'font-thin',
